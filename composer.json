@@ -1,0 +1,29 @@
+{
+	"name": "crizzo/ipanonym",
+	"type": "phpbb-extension",
+	"description": "This phpBB extension will anonymise the user's IP in posts, topics etc.",
+	"homepage": "https://github.com/Crizz0/phpbb-ipanonymise",
+	"version": "1.0.0-dev",
+	"time": "2019-07-31",
+	"license": "GPL-2.0-only",
+	"authors": [{
+			"name": "Christian Schnegelberger",
+			"email": "kontakt@crizzo.de",
+			"homepage": "https://www.crizzo.de",
+			"role": "Developer/Founder"
+		}],
+	"require": {
+		"php": ">=5.4.7,<7.2"
+	},
+	"extra": {
+		"display-name": "IP anonymised",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.2.4, <3.3@dev"
+		},
+		"version-check": {
+			"host": "www.crizzo.de",
+			"directory": "/phpbbextversion",
+			"filename": "phpbb-ipanonym.json"
+		}
+	}
+}
