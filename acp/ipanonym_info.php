@@ -19,7 +19,7 @@ class ipanonym_info
 			'title'		=> 'ACP_IPANONYM_TITLE',
 			'version'	=> '1.0.0-dev',
 			'modes'		=> array(
-				'config_aboutus'	=> array(
+				'ipanonym_settings'	=> array(
 				'title' => 'ACP_IPANONYM_TITLE', 
 				'auth' => 'ext_crizzo/ipanonym && acl_a_ipanonym',
 				'cat' => array('ACP_IPANONYM_TITLE')

@@ -45,7 +45,7 @@ class permission_listener implements EventSubscriberInterface
 	 * @return	null
 	 * @access	public
 	 */
-	public function permission($event)
+	public function permissions($event)
 	{
 		$permissions = $event['permissions'];
 		$permissions['a_ipanonym'] = array('lang' => 'ACL_A_IPANONYM', 'cat' => 'misc');

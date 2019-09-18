@@ -3,6 +3,9 @@ services:
         class: crizzo\ipanonym\event\permission_listener
         arguments:
             - '@auth'
+        tags:
+            - { name: event.listener }
+
     crizzo.ipanonym.cron.task.anonymise_ip:
         class: crizzo\ipanonym\cron\task\anonymise_ip
         arguments:

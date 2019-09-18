@@ -26,7 +26,7 @@ class init_install extends \phpbb\db\migration\migration
 				'ACP_IPANONYM_TITLE',
 				array(
 					'module_basename'	=> '\crizzo\ipanonym\acp\ipanonym_module',
-					'modes'				=> array('settings'),
+					'modes'				=> array('ipanonym_settings'),
 				),
 			)),
 			// Add config values
@@ -35,6 +35,7 @@ class init_install extends \phpbb\db\migration\migration
 			array('config.add', array('crizzo_ipanonym_max_age', '')),
 			// Add permissions
 			array('permission.add', array('a_ipanonym', true)),
+			array('permission.permission_set', array('ROLE_ADMIN_FULL', 'a_ipanonym', 'role', true)),
 		);
 	}
 }
