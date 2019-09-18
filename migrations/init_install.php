@@ -19,11 +19,11 @@ class init_install extends \phpbb\db\migration\migration
 			array('module.add', array(
 				'acp',
 				'ACP_CAT_DOT_MODS',
-				'ACP_IPANONYM_TITLE'
+				'ACP_IP_ANONYM_TITLE'
 			)),
 			array('module.add', array(
 				'acp',
-				'ACP_IPANONYM_TITLE',
+				'ACP_IP_ANONYM_TITLE',
 				array(
 					'module_basename'	=> '\crizzo\ipanonym\acp\ipanonym_module',
 					'modes'				=> array('ipanonym_settings'),

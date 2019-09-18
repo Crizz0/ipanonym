@@ -26,7 +26,11 @@ class ipanonym_module
 
 		global $config, $user, $template, $language, $request, $phpbb_container, $db, $phpbb_dispatcher, $phpbb_root_path, $phpEx;
 
+		/** @var \phpbb\language\language $language */
+		$language = $phpbb_container->get('language');
 
+		// Add the auto groups ACP lang file
+		$language->add_lang('acp', 'crizzo/ipanonym');
 
 		$this->user = $user;
 		$this->request = $request;

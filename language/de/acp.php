@@ -17,9 +17,15 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 $lang = array_merge($lang, array(
-	'IP_ANONYM' => 'IP anonymisiert',
+	'ACP_IP_ANONYM_TITLE'		=> 'IP-anonymisieren',
+	'ACP_IP_ANONYM_SETTINGS'	=> 'Einstellungen',
 
-	'ACP_IP_ANONYM_MAIN'		 	=> 'IP-anonymisieren',
+	'ACP_IP_ANONYM_DAYS'	=> 'Tage',
+
+	'ACP_IP_ANONYM_ENABLE' 			=> 'IP-anonymisieren aktivieren',
+	'ACP_IP_ANONYM_ENABLE_EXPLAIN' 	=> 'Sofern aktiviert, werden die hier auf der Seite eingetragenen Einstellungen angewendet und die IPs anonymisiert.',
+
+	'ACP_IP_ANONYM_MAIN'		 	=> 'IP-anonymisieren - Einstellungen',
 	'ACP_IP_ANONYM_MAIN_EXPLAIN' 	=> 'Auf dieser Einstellungsseite kann die Funktion der Erweiterung aktiviert und konfiguriert werden',
 
 	'ACP_IP_ANONYM_MAIN_SETTINGS'			=> 'IP-anonymisieren Einstellungen',
