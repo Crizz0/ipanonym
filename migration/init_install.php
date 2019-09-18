@@ -30,9 +30,11 @@ class init_install extends \phpbb\db\migration\migration
 				),
 			)),
 			// Add config values
+			array('config.add', array('crizzo_ipanonym_enable', false)),
 			array('config.add', array('crizzo_ipanonym_lastpurge', '')),
+			array('config.add', array('crizzo_ipanonym_max_age', '')),
 			// Add permissions
-			array('permission.add', array('a_ipanonym_', true, 'a_')),
+			array('permission.add', array('a_ipanonym', true)),
 		);
 	}
 }

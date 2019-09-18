@@ -1,15 +1,15 @@
 services:
     crizzo.ipanonym.listener:
-        class: crizzo\ipanonym\event\listener
+        class: crizzo\ipanonym\event\permission_listener
         arguments:
             - '@auth'
-    crizzo.ipanonym.cron.task.anonymize_ip:
-        class: crizzo\ipanonym\cron\task\anonymize_ip
+    crizzo.ipanonym.cron.task.anonymise_ip:
+        class: crizzo\ipanonym\cron\task\anonymise_ip
         arguments:
             - '@config'
             - '@dbal.conn'
             - '@log'
         calls:
-            - [set_name, [crizzo.ipanonym.cron.task.anonymize_ip]]
+            - [set_name, [crizzo.ipanonym.cron.task.anonymise_ip]]
         tags:
             - { name: cron.task }

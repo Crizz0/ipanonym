@@ -21,7 +21,7 @@ class ipanonym_info
 			'modes'		=> array(
 				'config_aboutus'	=> array(
 				'title' => 'ACP_IPANONYM_TITLE', 
-				'auth' => 'ext_crizzo/ipanonym && acl_a_board', 
+				'auth' => 'ext_crizzo/ipanonym && acl_a_ipanonym',
 				'cat' => array('ACP_IPANONYM_TITLE')
 				),
 			),
