@@ -12,6 +12,11 @@ namespace crizzo\ipanonym\migrations;
 
 class init_install extends \phpbb\db\migration\migration
 {
+	public function effectively_installed()
+	{
+		return isset($this->config['crizzo_ipanonym_enable']);
+	}
+
 	public function update_data()
 	{
 		return array(
@@ -32,7 +37,9 @@ class init_install extends \phpbb\db\migration\migration
 			// Add config values
 			array('config.add', array('crizzo_ipanonym_enable', false)),
 			array('config.add', array('crizzo_ipanonym_lastpurge', '')),
-			array('config.add', array('crizzo_ipanonym_max_age', '')),
+			array('config.add', array('crizzo_ipanonym_max_age', 180)),
+			array('config.add', array('crizzo_ipanonym_overwrite', false)),
+			array('config.add', array('crizzo_ipanonym_overwrite_time', '01.01.1970 12:00')),
 			// Add permissions
 			array('permission.add', array('a_ipanonym', true)),
 			array('permission.permission_set', array('ROLE_ADMIN_FULL', 'a_ipanonym', 'role', true)),

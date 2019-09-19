@@ -37,4 +37,6 @@ $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME'			=> 'Neuer Zeitstempel',
 	'ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME_EXPLAIN'	=> 'Der hier eingetragene Zeitstempel überschrebit den internen Zeitstempel und lässt den CronJob nur IP-Adresse überschreiben, die neue sind als dieser Zeitstempel.',
 	'ACP_IP_ANONYM_OVERWRITE_TIME_EXAMPLE'					=> 'DD:MM:YYYY HH:MM z. B. „01.01.1970 12:00“',
+
+	'ACP_IP_ANONYM_UPDATED'		=> 'Die Einstellungen von IP-anonymisieren wurden aktualisiert.',
 ));

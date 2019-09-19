@@ -37,4 +37,6 @@ $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME'			=> 'New timestamp',
 	'ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME_EXPLAIN'	=> 'The here defined timestamp will overwrite the internal timestamp. The cron task will overwrite only IP addresses younger than this timestamp.',
 	'ACP_IP_ANONYM_OVERWRITE_TIME_EXAMPLE'					=> 'DD:MM:YYYY HH:MM e.g. “01.01.1970 12:00“',
+
+	'ACP_IP_ANONYM_UPDATED'		=> 'The settings of IP-anonymise were updated.',
 ));
