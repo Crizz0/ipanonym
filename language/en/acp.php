@@ -22,6 +22,8 @@ $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_ENABLE' 			=> 'Activate IP-anonymise',
 	'ACP_IP_ANONYM_ENABLE_EXPLAIN' 	=> 'If activated, the settings on this page apply and the IPs will be anonymised.',
 
+	'ACP_IP_ANONYM_LOG_ENTRY'		=> 'IP-Adressen anonymisiert',
+
 	'ACP_IP_ANONYM_MAIN'		 	=> 'IP-anonymise - Settings',
 	'ACP_IP_ANONYM_MAIN_EXPLAIN' 	=> 'On this settings page you are able to activate and configure the extension.',
 
@@ -36,7 +38,7 @@ $lang = array_merge($lang, array(
 
 	'ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME'			=> 'New timestamp',
 	'ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME_EXPLAIN'	=> 'The here defined timestamp will overwrite the internal timestamp. The cron task will overwrite only IP addresses younger than this timestamp.',
-	'ACP_IP_ANONYM_OVERWRITE_TIME_EXAMPLE'					=> 'DD:MM:YYYY HH:MM e.g. “01.01.1970 12:00“',
+	'ACP_IP_ANONYM_OVERWRITE_TIME_EXAMPLE'					=> 'DD:MM:YYYY e.g. “01.01.1970“',
 
 	'ACP_IP_ANONYM_UPDATED'		=> 'The settings of IP-anonymise were updated.',
 ));

@@ -22,6 +22,8 @@ $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_ENABLE' 			=> 'IP-anonymisieren aktivieren',
 	'ACP_IP_ANONYM_ENABLE_EXPLAIN' 	=> 'Sofern aktiviert, werden die hier eingetragenen Einstellungen angewendet und die IPs anonymisiert.',
 
+	'ACP_IP_ANONYM_LOG_ENTRY'		=> 'IP-Adressen anonymisiert',
+
 	'ACP_IP_ANONYM_MAIN'		 	=> 'IP-anonymisieren - Einstellungen',
 	'ACP_IP_ANONYM_MAIN_EXPLAIN' 	=> 'Auf dieser Einstellungsseite kann die Funktion der Erweiterung aktiviert und konfiguriert werden.',
 
@@ -36,7 +38,7 @@ $lang = array_merge($lang, array(
 
 	'ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME'			=> 'Neuer Zeitstempel',
 	'ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME_EXPLAIN'	=> 'Der hier eingetragene Zeitstempel überschrebit den internen Zeitstempel und lässt den CronJob nur IP-Adresse überschreiben, die neue sind als dieser Zeitstempel.',
-	'ACP_IP_ANONYM_OVERWRITE_TIME_EXAMPLE'					=> 'DD:MM:YYYY HH:MM z. B. „01.01.1970 12:00“',
+	'ACP_IP_ANONYM_OVERWRITE_TIME_EXAMPLE'					=> 'TT.MM.JJJJ z. B. „01.01.1970“',
 
 	'ACP_IP_ANONYM_UPDATED'		=> 'Die Einstellungen von IP-anonymisieren wurden aktualisiert.',
 ));
