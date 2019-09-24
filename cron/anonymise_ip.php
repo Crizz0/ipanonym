@@ -52,20 +52,24 @@ class anonymise_ip extends \phpbb\cron\task\base
 		$time_now = time();
 		$time_run = $time_now - (int)$this->config['crizzo_ipanonym_max_age'] * 60 * 60 * 24;
 
-		// Check if cronjob is enabled
-		if ($this->config['crizzo_ipanonym_enable'] == 0)
-		{
-			return;
-		}
-
 		$this->task_anonymise->anonymise_ips($time_run, $this->db) ;
 		$this->phpbb_log->add('admin', ANONYMOUS, '127.0.0.1', 'LOG_ANONYMIZE_IP_CRON');
 		$this->config->set('crizzo_ipanonym_lastpurge', $time_now, false);
 	}
 
 	/**
+	 * Returns whether this cron task can run, given current board configuration.
+	 *
+	 * @return bool
+	 */
+	public function is_runnable()
+	{
+		return $this->config['crizzo_ipanonym_enable'];
+	}
+
+	/**
 	 * Returns whether this cron task should run now, because enough time
-	 * has passed since it was last run (2 days).
+	 * has passed since it was last run (24 hours).
 	 *
 	 * @return bool
 	 */
