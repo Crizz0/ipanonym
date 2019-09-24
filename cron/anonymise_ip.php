@@ -49,14 +49,14 @@ class anonymise_ip extends \phpbb\cron\task\base
 	 */
 	public function run()
 	{
-		// Check if cronjob should run
+		$time_now = time();
+		$time_run = $time_now - (int)$this->config['crizzo_ipanonym_max_age'] * 60 * 60 * 24;
+
+		// Check if cronjob is enabled
 		if ($this->config['crizzo_ipanonym_enable'] == 0)
 		{
 			return;
 		}
-
-		$time_now = time();
-		$time_run = $time_now - (int)$this->config['crizzo_ipanonym_max_age'] * 60 * 60 * 24;
 
 		$this->task_anonymise->anonymise_ips($time_run, $this->db) ;
 		$this->phpbb_log->add('admin', ANONYMOUS, '127.0.0.1', 'LOG_ANONYMIZE_IP_CRON');
@@ -71,6 +71,6 @@ class anonymise_ip extends \phpbb\cron\task\base
 	 */
 	public function should_run()
 	{
-		return $this->config['crizzo_ipanonym_lastpurge'] < strtotime('20 minutes ago');
+		return (int) $this->config['crizzo_ipanonym_lastpurge'] < strtotime('24 hours ago');
 	}
 }
