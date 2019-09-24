@@ -38,8 +38,7 @@ class init_install extends \phpbb\db\migration\migration
 			array('config.add', array('crizzo_ipanonym_enable', false)),
 			array('config.add', array('crizzo_ipanonym_lastpurge', '')),
 			array('config.add', array('crizzo_ipanonym_max_age', 180)),
-			array('config.add', array('crizzo_ipanonym_overwrite', false)),
-			array('config.add', array('crizzo_ipanonym_overwrite_time', '01.01.1970')),
+
 			// Add permissions
 			array('permission.add', array('a_ipanonym', true)),
 			array('permission.permission_set', array('ROLE_ADMIN_FULL', 'a_ipanonym', 'role', true)),

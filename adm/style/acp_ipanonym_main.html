@@ -23,19 +23,6 @@
 			<dt><label for="crizzo_ipanonym_max_age">{{ lang('ACP_IP_ANONYM_MAX_AGE')}}{{ lang('COLON') }}</label><br><span>{{ lang('ACP_IP_ANONYM_MAX_AGE_EXPLAIN')}}</span></dt>
 			<dd><input id="crizzo_ipanonym_max_age" type="number" min="1" max="9999" name="crizzo_ipanonym_max_age" value="{{ IP_ANONYM_MAX_AGE_VALUE }}"> {{ lang('ACP_IP_ANONYM_DAYS') }}</dd>
 		</dl>
-		<hr>
-		<dl>
-			<dt><label for="crizzo_ipanonym_overwrite">{{ lang('ACP_IP_ANONYM_OVERWRITE_TIMESTAMP')}}{{ lang('COLON') }}</label><br><span>{{ lang('ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_EXPLAIN')}}</span></dt>
-			<dd>
-				<label><input type="radio" class="radio" id="crizzo_ipanonym_overwrite" name="crizzo_ipanonym_overwrite" value="1" {% if IP_ANONYM_OVERWRITE %}checked="checked"{% endif %}/> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="crizzo_ipanonym_overwrite" value="0" {% if not IP_ANONYM_OVERWRITE %}checked="checked"{% endif %}/> {{ lang('NO') }}</label>
-			</dd>
-		</dl>
-
-		<dl>
-			<dt><label for="crizzo_ipanonym_overwrite_time">{{ lang('ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME')}}{{ lang('COLON') }}</label><br><span>{{ lang('ACP_IP_ANONYM_OVERWRITE_TIMESTAMP_NEW_TIME_EXPLAIN')}}</span></dt>
-			<dd><input id="crizzo_ipanonym_overwrite_time" type="date" name="crizzo_ipanonym_overwrite_time" value="{{ IP_ANONYM_OVERWRITE_TIME }}"> {{ lang('ACP_IP_ANONYM_OVERWRITE_TIME_EXAMPLE')}}</dd>
-		</dl>
 	</fieldset>
 
 	<fieldset class="submit-buttons">

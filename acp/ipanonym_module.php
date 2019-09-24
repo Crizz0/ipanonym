@@ -59,8 +59,6 @@ class ipanonym_module
 			{
 				$config->set('crizzo_ipanonym_enable', $request->variable('crizzo_ipanonym_enable', false));
 				$config->set('crizzo_ipanonym_max_age', $request->variable('crizzo_ipanonym_max_age', 0));
-				$config->set('crizzo_ipanonym_overwrite', $request->variable('crizzo_ipanonym_overwrite', false));
-				$config->set('crizzo_ipanonym_overwrite_time', $request->variable('crizzo_ipanonym_overwrite_time', '', true));
 
 				trigger_error($language->lang('ACP_IP_ANONYM_UPDATED') . adm_back_link($this->u_action));
 			}
@@ -72,9 +70,6 @@ class ipanonym_module
 
 			'IP_ANONYM_ENABLED'			=> $config['crizzo_ipanonym_enable'],
 			'IP_ANONYM_MAX_AGE_VALUE'	=> $config['crizzo_ipanonym_max_age'],
-			'IP_ANONYM_OVERWRITE'		=> $config['crizzo_ipanonym_overwrite'],
-			'IP_ANONYM_OVERWRITE_TIME' 	=> $config['crizzo_ipanonym_overwrite_time'],
-
 		));
 	}
 }

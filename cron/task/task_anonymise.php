@@ -17,45 +17,45 @@ namespace crizzo\ipanonym\cron\task;
 
 class task_anonymise
 {
-	public function anonymise_ips($time_run, $last_purge, $db)
+	public function anonymise_ips($time_run, $db)
 	{
 		// postings
 		$sql = 'UPDATE ' . POSTS_TABLE . "
-			SET poster_ip = '127.0.0.3'
-			WHERE post_time < " . (int)$time_run; // between time_run and (int)$last_purge
-		$db->sql_query_limit($sql, 500);
+			SET poster_ip = '127.0.0.2'
+			WHERE post_time < " . (int)$time_run;
+		$db->sql_query_limit($sql, 200);
 
 		// private messages
 		$sql = 'UPDATE ' . PRIVMSGS_TABLE . "
-			SET author_ip = '127.0.0.3'
+			SET author_ip = '127.0.0.2'
 			WHERE message_time < " . (int)$time_run;
-		$db->sql_query_limit($sql, 500);
+		$db->sql_query_limit($sql, 200);
 
 		// user
 		$sql = 'UPDATE ' . USERS_TABLE . "
-			SET user_ip = '127.0.0.3'
+			SET user_ip = '127.0.0.2'
 			WHERE user_regdate < " . (int)$time_run;
-		$db->sql_query_limit($sql, 500);
+		$db->sql_query_limit($sql, 200);
 
 		// logs
 		$sql = 'UPDATE ' . LOG_TABLE . "
-			SET log_ip = '127.0.0.3'
+			SET log_ip = '127.0.0.2'
 			WHERE log_time < " . (int)$time_run;
-		$db->sql_query_limit($sql, 500);
+		$db->sql_query_limit($sql, 200);
 
 		// polls
 		$sql = 'UPDATE ' . POLL_VOTES_TABLE . "
-			SET vote_user_ip = '127.0.0.3'";
-		$db->sql_query_limit($sql, 100);
+			SET vote_user_ip = '127.0.0.2'";
+		$db->sql_query_limit($sql, 200);
 
 		// sessions
 		$sql = 'UPDATE ' . SESSIONS_TABLE . "
-			SET session_ip = '127.0.0.3'
+			SET session_ip = '127.0.0.2'
 			WHERE session_time < " . (int)$time_run;
-		$db->sql_query_limit($sql, 500);
+		$db->sql_query_limit($sql, 200);
 
 		$sql = 'UPDATE ' . SESSIONS_KEYS_TABLE . "
-			SET last_ip = '127.0.0.3'";
+			SET last_ip = '127.0.0.2'";
 		$db->sql_query($sql);
 	}
 }
