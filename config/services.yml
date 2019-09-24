@@ -6,12 +6,16 @@ services:
         tags:
             - { name: event.listener }
 
+    crizzo.ipanonym.task.anonymise_ips:
+        class: crizzo\ipanonym\cron\task\task_anonymise
+
     crizzo.ipanonym.cron.task.anonymise_ip:
         class: crizzo\ipanonym\cron\anonymise_ip
         arguments:
             - '@config'
             - '@dbal.conn'
             - '@log'
+            - '@crizzo.ipanonym.task.anonymise_ips'
         calls:
             - [set_name, [crizzo.ipanonym.cron.task.anonymise_ip]]
         tags:

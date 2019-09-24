@@ -19,4 +19,6 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_TITLE'		=> 'IP-anonymisieren',
 	'ACP_IP_ANONYM_SETTINGS'	=> 'Einstellungen',
+
+	'LOG_ANONYMIZE_IP_CRON'		=> 'IPs automatisch anonymisiert',
 ));
