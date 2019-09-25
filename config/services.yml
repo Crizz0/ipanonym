@@ -8,6 +8,8 @@ services:
 
     crizzo.ipanonym.task.anonymise_ips:
         class: crizzo\ipanonym\cron\task\task_anonymise
+        arguments:
+            - '@config'
 
     crizzo.ipanonym.cron.task.anonymise_ip:
         class: crizzo\ipanonym\cron\anonymise_ip

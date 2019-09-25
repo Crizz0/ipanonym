@@ -75,6 +75,8 @@ class anonymise_ip extends \phpbb\cron\task\base
 	 */
 	public function should_run()
 	{
-		return (int) $this->config['crizzo_ipanonym_lastpurge'] < strtotime('24 hours ago');
+		$should_run_time = (int) $this->config['crizzo_ipanonym_should_run_time'];
+		$should_run_string = $should_run_time . ' hours ago';
+		return (int) $this->config['crizzo_ipanonym_lastpurge'] < strtotime($should_run_string);
 	}
 }
