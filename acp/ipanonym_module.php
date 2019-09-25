@@ -67,12 +67,12 @@ class ipanonym_module
 		}
 
 		$template->assign_vars(array(
-			'ERRORS'					=> $error,
-			'U_ACTION'					=> $this->u_action,
+			'ERRORS'								=> $error,
+			'U_ACTION'								=> $this->u_action,
 
-			'IP_ANONYM_ENABLED'			=> $config['crizzo_ipanonym_enable'],
-			'IP_ANONYM_MAX_AGE_VALUE'	=> $config['crizzo_ipanonym_max_age'],
-			'ACP_IP_ANONYM_QUERY_RUNS_VALUE'	=> $config['crizzo_ipanonym_sql_query_runs'],
+			'IP_ANONYM_ENABLED'						=> $config['crizzo_ipanonym_enable'],
+			'IP_ANONYM_MAX_AGE_VALUE'				=> $config['crizzo_ipanonym_max_age'],
+			'ACP_IP_ANONYM_QUERY_RUNS_VALUE'		=> $config['crizzo_ipanonym_sql_query_runs'],
 			'ACP_IP_ANONYM_SHOULD_RUN_TIME_VALUE'	=> $config['crizzo_ipanonym_should_run_time'],
 		));
 	}

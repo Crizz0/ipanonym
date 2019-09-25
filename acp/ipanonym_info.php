@@ -17,7 +17,7 @@ class ipanonym_info
 		return array(
 			'filename'	=> '\crizzo\ipanonym\acp\ipanomym_module',
 			'title'		=> 'ACP_IP_ANONYM_TITLE',
-			'version'	=> '1.0.0-dev',
+			'version'	=> '1.0.0',
 			'modes'		=> array(
 				'ipanonym_settings'	=> array(
 				'title' => 'ACP_IP_ANONYM_SETTINGS',
