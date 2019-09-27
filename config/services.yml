@@ -10,12 +10,12 @@ services:
         class: crizzo\ipanonym\cron\task\task_anonymise
         arguments:
             - '@config'
+            - '@dbal.conn'
 
     crizzo.ipanonym.cron.task.anonymise_ip:
         class: crizzo\ipanonym\cron\anonymise_ip
         arguments:
             - '@config'
-            - '@dbal.conn'
             - '@log'
             - '@crizzo.ipanonym.task.anonymise_ips'
         calls:

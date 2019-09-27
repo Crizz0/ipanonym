@@ -21,10 +21,16 @@ namespace crizzo\ipanonym\acp;
 class ipanonym_module
 {
 	public $u_action;
+	public $tpl_name;
+	public $page_title;
+
+	protected $config;
+	protected $request;
+	protected $template;
 
 	public function main($id, $mode) {
 
-		global $config, $user, $template, $language, $request, $phpbb_container, $db, $phpbb_dispatcher, $phpbb_root_path, $phpEx;
+		global $config, $template, $language, $request, $phpbb_container;
 
 		/** @var \phpbb\language\language $language */
 		$language = $phpbb_container->get('language');
@@ -32,14 +38,9 @@ class ipanonym_module
 		// Add the auto groups ACP lang file
 		$language->add_lang('acp', 'crizzo/ipanonym');
 
-		$this->user = $user;
 		$this->request = $request;
-		$this->db = $db;
 		$this->config = $config;
 		$this->template = $template;
-		$this->phpbb_root_path = $phpbb_root_path;
-		$this->phpbb_dispatcher = $phpbb_dispatcher;
-		$this->php_ext = $phpEx;
 
 		$this->tpl_name = 'acp_ipanonym_main';
 		$this->page_title = ('ACP_IP_ANONYM_MAIN');
