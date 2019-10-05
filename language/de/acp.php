@@ -17,12 +17,12 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 $lang = array_merge($lang, array(
-	'ACP_IP_ANONYM_DAYS'			=> 'Tage',
-
 	'ACP_IP_ANONYM_ENABLE' 			=> 'IP-anonymisieren aktivieren',
 	'ACP_IP_ANONYM_ENABLE_EXPLAIN' 	=> 'Sofern aktiviert, werden die hier eingetragenen Einstellungen angewendet und die IPs anonymisiert.',
 
+	'ACP_IP_ANONYM_DAYS'			=> 'Tage',
 	'ACP_IP_ANONYM_HOURS'			=> 'Stunden',
+	'ACP_IP_ANONYM_MINUTES'			=> 'Minuten',
 
 	'ACP_IP_ANONYM_LOG_ENTRY'		=> 'IP-Adressen anonymisiert',
 
