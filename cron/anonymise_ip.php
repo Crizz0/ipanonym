@@ -50,9 +50,9 @@ class anonymise_ip extends \phpbb\cron\task\base
 		$time_now = time();
 		$time_run = $time_now - (int)$this->config['crizzo_ipanonym_max_age'] * 60 * 60 * 24;
 
+		$this->config->set('crizzo_ipanonym_lastpurge', $time_now, false);
 		$this->task_anonymise->anonymise_ips($time_run) ;
 		$this->phpbb_log->add('admin', ANONYMOUS, '127.0.0.1', 'LOG_ANONYMIZE_IP_CRON');
-		$this->config->set('crizzo_ipanonym_lastpurge', $time_now, false);
 	}
 
 	/**
@@ -73,8 +73,10 @@ class anonymise_ip extends \phpbb\cron\task\base
 	 */
 	public function should_run()
 	{
-		$should_run_time = (int) $this->config['crizzo_ipanonym_should_run_time'];
-		$should_run_string = $should_run_time . ' hours ago';
-		return (int) $this->config['crizzo_ipanonym_lastpurge'] < strtotime($should_run_string);
+		$should_run_minutes = (int) $this->config['crizzo_ipanonym_should_run_time'];
+
+		$should_run_time = time() - ($should_run_minutes * 60);
+
+		return (int) $this->config['crizzo_ipanonym_lastpurge'] < $should_run_time;
 	}
 }

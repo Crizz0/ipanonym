@@ -42,42 +42,49 @@ class task_anonymise
 		// postings
 		$sql = 'UPDATE ' . POSTS_TABLE . "
 			SET poster_ip = '127.0.0.1'
-			WHERE post_time < " . (int)$time_run . " AND poster_ip <> '127.0.0.1'";
+			WHERE post_time < " . (int) $time_run . " AND poster_ip <> '127.0.0.1'
+			ORDER BY post_time ASC";
 		$this->db->sql_query_limit($sql, $sql_query_runs);
 
 		// private messages
 		$sql = 'UPDATE ' . PRIVMSGS_TABLE . "
 			SET author_ip = '127.0.0.1'
-			WHERE message_time < " . (int)$time_run . " AND author_ip <> '127.0.0.1'";
+			WHERE message_time < " . (int) $time_run . " AND author_ip <> '127.0.0.1'
+			ORDER BY message_time ASC";
 		$this->db->sql_query_limit($sql, $sql_query_runs);
 
 		// user
 		$sql = 'UPDATE ' . USERS_TABLE . "
 			SET user_ip = '127.0.0.1'
-			WHERE user_regdate < " . (int)$time_run . " AND user_ip <> '127.0.0.1'";
+			WHERE user_regdate < " . (int) $time_run . " AND user_ip <> '127.0.0.1'
+			ORDER BY user_regdate ASC";
 		$this->db->sql_query_limit($sql, $sql_query_runs);
 
 		// logs
 		$sql = 'UPDATE ' . LOG_TABLE . "
 			SET log_ip = '127.0.0.1'
-			WHERE log_time < " . (int)$time_run . " AND log_ip <> '127.0.0.1'";
+			WHERE log_time < " . (int) $time_run . " AND log_ip <> '127.0.0.1'
+			ORDER BY log_time ASC";
 		$this->db->sql_query_limit($sql, $sql_query_runs);
 
 		// polls; The ACP description tells the admin, that these entries are overwritten regardless of their the age.
 		$sql = 'UPDATE ' . POLL_VOTES_TABLE . "
 			SET vote_user_ip = '127.0.0.1'
-			WHERE vote_user_ip <> '127.0.0.1'";
+			WHERE vote_user_ip <> '127.0.0.1'
+			ORDER BY topic_id ASC";
 		$this->db->sql_query_limit($sql, $sql_query_runs);
 
 		// sessions
 		$sql = 'UPDATE ' . SESSIONS_TABLE . "
 			SET session_ip = '127.0.0.1'
-			WHERE session_time < " . (int)$time_run . " AND session_ip <> '127.0.0.1'";
+			WHERE session_time < " . (int) $time_run . " AND session_ip <> '127.0.0.1'
+			ORDER BY session_time ASC";
 		$this->db->sql_query_limit($sql, $sql_query_runs);
 
 		$sql = 'UPDATE ' . SESSIONS_KEYS_TABLE . "
 			SET last_ip = '127.0.0.1'
-			WHERE last_login < " . (int)$time_run . " AND last_ip <> '127.0.0.1'";
+			WHERE last_login < " . (int) $time_run . " AND last_ip <> '127.0.0.1'
+			ORDER BY last_login ASC";
 		$this->db->sql_query_limit($sql, $sql_query_runs);
 	}
 }
