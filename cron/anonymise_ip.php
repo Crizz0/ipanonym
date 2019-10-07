@@ -12,7 +12,7 @@ namespace crizzo\ipanonym\cron;
 
 
 /**
- * IP-anonymise  cron task.
+ * IP-anonymise cron task.
  */
 
 class anonymise_ip extends \phpbb\cron\task\base
@@ -30,7 +30,7 @@ class anonymise_ip extends \phpbb\cron\task\base
 	 * Constructor
 	 *
 	 * @param \phpbb\config\config							$config
-	 * @param \phpbb\log\log_interface 						$log
+	 * @param \phpbb\log\log_interface 						$phpbb_log
 	 * @param \crizzo\ipanonym\cron\task\task_anonymise 	$task_anonymise
 	 */
 	public function __construct(\phpbb\config\config $config, \phpbb\log\log_interface $phpbb_log, \crizzo\ipanonym\cron\task\task_anonymise $task_anonymise)
@@ -51,7 +51,7 @@ class anonymise_ip extends \phpbb\cron\task\base
 		$time_run = $time_now - (int)$this->config['crizzo_ipanonym_max_age'] * 60 * 60 * 24;
 
 		$this->config->set('crizzo_ipanonym_lastpurge', $time_now, false);
-		$this->task_anonymise->anonymise_ips($time_run) ;
+		$this->task_anonymise->anonymise_ips($time_run);
 		$this->phpbb_log->add('admin', ANONYMOUS, '127.0.0.1', 'LOG_ANONYMIZE_IP_CRON');
 	}
 
