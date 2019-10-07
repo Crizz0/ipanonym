@@ -6,4 +6,4 @@ Author: Christian Schnegelberger
 
 URL: https://www.crizzo.de
 
-Version: v1.0.1-dev
+Version: v1.0.1
