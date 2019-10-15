@@ -11,6 +11,7 @@ services:
         arguments:
             - '@config'
             - '@dbal.conn'
+            - '@?dmzx.mchat.settings'
 
     crizzo.ipanonym.cron.task.anonymise_ip:
         class: crizzo\ipanonym\cron\anonymise_ip
