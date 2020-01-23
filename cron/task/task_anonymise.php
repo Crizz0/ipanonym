@@ -23,22 +23,26 @@ class task_anonymise
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
+	/** @var \dmzx\mchat\core\settings */
+	protected $mchat;
+
 	/**
 	 * Constructor
 	 *
 	 * @param \phpbb\config\config							$config
 	 * @param \phpbb\db\driver\driver_interface				$db
 	 */
-	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db)
+	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \dmzx\mchat\core\settings $mchat = null)
 	{
 		$this->config 		= $config;
 		$this->db			= $db;
+		$this->mchat		= $mchat;
 	}
 
 	public function anonymise_ips($time_run)
 	{
 		$sql_query_runs = (int) $this->config['crizzo_ipanonym_sql_query_runs'];
-		
+
 		// postings
 		$sql = 'UPDATE ' . POSTS_TABLE . "
 			SET poster_ip = '127.0.0.1'
@@ -86,5 +90,25 @@ class task_anonymise
 			WHERE last_login < " . (int) $time_run . " AND last_ip <> '127.0.0.1'
 			ORDER BY last_login ASC";
 		$this->db->sql_query_limit($sql, $sql_query_runs);
+
+		// mchat messages
+		if (is_callable([$this->mchat, 'get_table_mchat']))
+		{
+			$sql = 'UPDATE ' . $this->mchat->get_table_mchat() . "
+				SET user_ip = '127.0.0.1'
+				WHERE message_time < " . (int) $time_run . " AND user_ip <> '127.0.0.1'
+				ORDER BY message_time ASC";
+			$this->db->sql_query_limit($sql, $sql_query_runs);
+		}
+
+		// mchat logs
+		if (is_callable([$this->mchat, 'get_table_mchat_log']))
+		{
+			$sql = 'UPDATE ' . $this->mchat->get_table_mchat_log() . "
+				SET log_ip = '127.0.0.1'
+				WHERE log_time < " . (int) $time_run . " AND log_ip <> '127.0.0.1'
+				ORDER BY log_time ASC";
+			$this->db->sql_query_limit($sql, $sql_query_runs);
+		}
 	}
 }
