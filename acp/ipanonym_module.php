@@ -35,7 +35,7 @@ class ipanonym_module
 		/** @var \phpbb\language\language $language */
 		$language = $phpbb_container->get('language');
 
-		// Add the auto groups ACP lang file
+		// Add the ipanonym ACP lang file
 		$language->add_lang('acp', 'crizzo/ipanonym');
 
 		$this->request = $request;
