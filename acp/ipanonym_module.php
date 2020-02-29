@@ -28,7 +28,8 @@ class ipanonym_module
 	protected $request;
 	protected $template;
 
-	public function main($id, $mode) {
+	public function main($id, $mode)
+	{
 
 		global $config, $template, $request, $phpbb_container;
 

@@ -10,7 +10,6 @@
 
 namespace crizzo\ipanonym\cron;
 
-
 /**
  * IP-anonymise cron task.
  */
@@ -48,7 +47,7 @@ class anonymise_ip extends \phpbb\cron\task\base
 	public function run()
 	{
 		$time_now = time();
-		$time_run = $time_now - (int)$this->config['crizzo_ipanonym_max_age'] * 60 * 60 * 24;
+		$time_run = $time_now - (int) $this->config['crizzo_ipanonym_max_age'] * 60 * 60 * 24;
 
 		$this->config->set('crizzo_ipanonym_lastpurge', $time_now, false);
 		$this->task_anonymise->anonymise_ips($time_run);

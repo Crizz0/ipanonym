@@ -10,7 +10,6 @@
 
 namespace crizzo\ipanonym\cron\task;
 
-
 /**
  * IP-anonymise cron task.
  */

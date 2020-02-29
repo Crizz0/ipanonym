@@ -9,13 +9,17 @@
  */
 
 namespace crizzo\ipanonym\event;
+
 /**
 * @ignore
 */
+
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
 /**
 * Event listener
 */
+
 class permission_listener implements EventSubscriberInterface
 {
 	/** @var \phpbb\auth\auth */
