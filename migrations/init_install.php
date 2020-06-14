@@ -43,7 +43,10 @@ class init_install extends \phpbb\db\migration\migration
 
 			// Add permissions
 			array('permission.add', array('a_ipanonym', true)),
-			array('permission.permission_set', array('ROLE_ADMIN_FULL', 'a_ipanonym', 'role', true)),
+			if ($this->role_exists('ROLE_ADMIN_FULL'))
+			{
+				array('permission.permission_set', array('ROLE_ADMIN_FULL', 'a_ipanonym', 'role', true)),
+			}
 		);
 	}
 }
