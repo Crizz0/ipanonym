@@ -88,11 +88,20 @@ class ipanonym_stats
 			$oldest_mchat_log =$this->db->sql_query_limit($sql, 1);
 		}
 
+		$cronjob_last_run_time = $this->config['crizzo_ipanonym_lastpurge'];
 
 		$this->template->assign_vars(array(
-			'ACP_IP_ANONYM_QUERY_RUNS_VALUE'		=> $this->config['crizzo_ipanonym_lastpurge'],
+			'ACP_IP_ANONYM_QUERY_RUNS_VALUE'		=> 
 			'MCHAT_AVAILABLE'		=> $mchat_avail,
 			'MCHAT_LOG_AVAILABLE'	=> $mchat_log_avail,
+
+			'CRONJOB_LAST_RUN_TIME'		=> $this->user->format_date($cronjob_last_run_time);
+			'OLDEST_POST_TIME'			=> $this->user->format_date($oldest_post);
+			'OLDEST_PM_TIME'			=> $this->user->format_date($oldest_pm);
+			'OLDEST_USER_TIME'			=> $this->user->format_date($oldest_user);
+			'OLDEST_LOG_TIME'			=> $this->user->format_date($oldest_log);
+			'OLDEST_MCHAT_MESSAGE'		=> $this->user->format_date($oldest_mchat_message);
+			'OLDEST_MCHAT_LOG'			=> $this->user->format_date($oldest_mchat_log);
 		));
 	}
 }
