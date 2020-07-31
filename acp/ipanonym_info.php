@@ -20,15 +20,15 @@ class ipanonym_info
 			'version'	=> '1.0.2-dev',
 			'modes'		=> array(
 				'ipanonym_settings'	=> array(
-				'title' => 'ACP_IP_ANONYM_SETTINGS',
-				'auth' => 'ext_crizzo/ipanonym && acl_a_ipanonym',
-				'cat' => array('ACP_IP_ANONYM_TITLE')
-				),
+						'title' => 'ACP_IP_ANONYM_SETTINGS',
+						'auth' => 'ext_crizzo/ipanonym && acl_a_ipanonym',
+						'cat' => array('ACP_IP_ANONYM_TITLE')
+					),
 				'ipanonym_stats'	=> array(
-				'title' => 'ACP_IP_ANONYM_STATS',
-				'auth' => 'ext_crizzo/ipanonym && acl_a_ipanonym',
-				'cat' => array('ACP_IP_ANONYM_TITLE')
-				),
+						'title' => 'ACP_IP_ANONYM_STATS',
+						'auth' => 'ext_crizzo/ipanonym && acl_a_ipanonym',
+						'cat' => array('ACP_IP_ANONYM_TITLE')
+					),
 			),
 		);
 	}

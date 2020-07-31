@@ -27,7 +27,7 @@ class v102 extends \phpbb\db\migration\migration
 					'acp',
 					'ACP_IP_ANONYM_TITLE',
 					array(
-						'module_basename'	=> '\crizzo\ipanonym\acp\ipanonym_stats',
+						'module_basename'	=> '\crizzo\ipanonym\acp\ipanonym_module',
 						'modes'				=> array('ipanonym_stats'),
 					),
 				)),
