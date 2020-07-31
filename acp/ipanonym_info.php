@@ -24,6 +24,11 @@ class ipanonym_info
 				'auth' => 'ext_crizzo/ipanonym && acl_a_ipanonym',
 				'cat' => array('ACP_IP_ANONYM_TITLE')
 				),
+				'ipanonym_stats'	=> array(
+				'title' => 'ACP_IP_ANONYM_STATS',
+				'auth' => 'ext_crizzo/ipanonym && acl_a_ipanonym',
+				'cat' => array('ACP_IP_ANONYM_TITLE')
+				),
 			),
 		);
 	}
