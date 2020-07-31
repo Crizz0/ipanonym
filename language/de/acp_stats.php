@@ -19,7 +19,9 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_STATS' 			=> 'Statistiken',
 	'ACP_IP_ANONYM_STATS_EXPLAIN' 	=> 'Auf dieser Seite wird angezeigt, wann der Cronjob zuletzt lief und wie alt die ältesten noch nicht anonymisierten Einträge sind.',
-	
+
+	'ACP_IP_ANONYM_DATE'	=> 'Datum',
+
 	'ACP_IP_ANONYM_CRON_LAST_RUN' 			=> 'Cronjob lief zuletzt am:',
 	'ACP_IP_ANONYM_OLDEST_POST' 			=> 'Ältester nicht anonymisierter Beitrag:',
 	'ACP_IP_ANONYM_OLDEST_PM' 				=> 'Älteste nicht anonymisierte Private Nachricht:',
