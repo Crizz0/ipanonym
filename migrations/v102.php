@@ -32,5 +32,6 @@ class v102 extends \phpbb\db\migration\migration
 					),
 				)),
 		);
+		return $data;
 	}
 }
