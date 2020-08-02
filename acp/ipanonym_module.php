@@ -95,7 +95,7 @@ class ipanonym_module
 				// Add the ipanonym ACP lang file
 				$language->add_lang('acp_stats', 'crizzo/ipanonym');
 
-				// Check for mChat Install
+				// Check for mChat availability
 				if ($phpbb_container->has('dmzx.mchat.settings'))
 				{
 					$mchat = $phpbb_container->get('dmzx.mchat.settings');
@@ -150,9 +150,10 @@ class ipanonym_module
 				$oldest_log = $rows[0]['log_time'];
 				$this->db->sql_freeresult($result);
 
-				// mchat messages
-				if (is_callable([$mchat, 'get_table_mchat']))
+				// mchat statistics
+				if (is_callable([$mchat, 'get_table_mchat']) && is_callable([$mchat, 'get_table_mchat_log']))
 				{
+					// mchat messages
 					$mchat_avail = true;
 					$sql = 'SELECT message_time FROM ' . $mchat->get_table_mchat() . "
 						WHERE user_ip <> '127.0.0.1'
@@ -161,11 +162,8 @@ class ipanonym_module
 					$rows = $this->db->sql_fetchrowset($result);
 					$oldest_mchat_message = $rows[0]['message_time'];
 					$this->db->sql_freeresult($result);
-				}
 
-				// mchat logs
-				if (is_callable([$mchat, 'get_table_mchat_log']))
-				{
+					// mchat logs
 					$mchat_log_avail = true;
 					$sql = 'SELECT log_time FROM ' . $mchat->get_table_mchat_log() . "
 						WHERE log_ip <> '127.0.0.1'
@@ -179,17 +177,23 @@ class ipanonym_module
 				$cronjob_last_run_time = $this->config['crizzo_ipanonym_lastpurge'];
 
 				$this->template->assign_vars(array(
-					'MCHAT_AVAILABLE'		=> $mchat_avail,
-					'MCHAT_LOG_AVAILABLE'	=> $mchat_log_avail,
-
 					'CRONJOB_LAST_RUN_TIME'		=> ($cronjob_last_run_time != ('' || '0')) ? $this->user->format_date($cronjob_last_run_time) : $language->lang('ACP_IP_ANONYM_NO_CRONJOB_RUN'),
 					'OLDEST_POST_TIME'			=> ($oldest_post != '') ? $this->user->format_date($oldest_post) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
 					'OLDEST_PM_TIME'			=> ($oldest_pm != '') ? $this->user->format_date($oldest_pm) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
 					'OLDEST_USER_TIME'			=> ($oldest_user != '') ? $this->user->format_date($oldest_user) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
 					'OLDEST_LOG_TIME'			=> ($oldest_log != '') ? $this->user->format_date($oldest_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
-					'OLDEST_MCHAT_MESSAGE'		=> ($oldest_mchat_message != '') ? $this->user->format_date($oldest_mchat_message) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
-					'OLDEST_MCHAT_LOG'			=> ($oldest_mchat_log != '') ? $this->user->format_date($oldest_mchat_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
 				));
+
+				// Template events for mChat 
+				if (is_callable([$mchat, 'get_table_mchat']) && is_callable([$mchat, 'get_table_mchat_log']))
+				{
+					$this->template->assign_vars(array(
+						'MCHAT_AVAILABLE'		=> $mchat_avail,
+						'MCHAT_LOG_AVAILABLE'	=> $mchat_log_avail,
+						'OLDEST_MCHAT_MESSAGE'		=> ($oldest_mchat_message != '') ? $this->user->format_date($oldest_mchat_message) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+						'OLDEST_MCHAT_LOG'			=> ($oldest_mchat_log != '') ? $this->user->format_date($oldest_mchat_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					));
+				}
 			break;
 		}
 	}
