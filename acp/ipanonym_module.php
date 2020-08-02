@@ -85,7 +85,7 @@ class ipanonym_module
 					'ACP_IP_ANONYM_SHOULD_RUN_TIME_VALUE'	=> $this->config['crizzo_ipanonym_should_run_time'],
 				));
 			break;
-			
+
 			// Statistics
 			case 'ipanonym_stats':
 

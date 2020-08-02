@@ -27,7 +27,7 @@ $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_OLDEST_PM' 				=> 'Älteste nicht anonymisierte Private Nachricht:',
 	'ACP_IP_ANONYM_OLDEST_USER' 			=> 'Ältester nicht anonymisierter Benutzer:',
 	'ACP_IP_ANONYM_OLDEST_LOG' 				=> 'Ältester nicht anonymisierter Log-Eintrag:',
-	
+
 	'ACP_IP_ANONYM_OLDEST_MCHAT_MESSAGE' 	=> 'Älteste nicht anonymisierte mChat Nachricht:',
 	'ACP_IP_ANONYM_OLDEST_MCHAT_LOG' 		=> 'Älteste nicht anonymisierter mChat Log-Eintrag:',
 
