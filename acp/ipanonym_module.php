@@ -108,25 +108,37 @@ class ipanonym_module
 				$sql = 'SELECT post_time FROM ' . POSTS_TABLE . "
 					WHERE poster_ip <> '127.0.0.1'
 					ORDER BY post_time ASC";
-				$oldest_post = $this->db->sql_query_limit($sql, 1);
+				$result = $this->db->sql_query_limit($sql, 1);
+				$rows = $this->db->sql_fetchrowset($result);
+				$oldest_post = $rows[0]['post_time'];
+				$this->db->sql_freeresult($result);
 
 				// private messages
 				$sql = 'SELECT message_time FROM ' . PRIVMSGS_TABLE . "
 					WHERE author_ip <> '127.0.0.1'
 					ORDER BY message_time ASC";
-				$oldest_pm =$this->db->sql_query_limit($sql, 1);
+				$result = $this->db->sql_query_limit($sql, 1);
+				$rows = $this->db->sql_fetchrowset($result);
+				$oldest_pm = $rows[0]['message_time'];
+				$this->db->sql_freeresult($result);
 
 				// user
 				$sql = 'SELECT user_regdate FROM ' . USERS_TABLE . "
 					WHERE user_ip <> '127.0.0.1'
 					ORDER BY user_regdate ASC";
-				$oldest_user =$this->db->sql_query_limit($sql, 1);
+				$result = $this->db->sql_query_limit($sql, 1);
+				$rows = $this->db->sql_fetchrowset($result);
+				$oldest_user = $rows[0]['user_regdate'];
+				$this->db->sql_freeresult($result);
 
 				// logs
 				$sql = 'SELECT log_time FROM ' . LOG_TABLE . "
 					WHERE log_ip <> '127.0.0.1'
 					ORDER BY log_time ASC";
-				$oldest_log =$this->db->sql_query_limit($sql, 1);
+				$result = $this->db->sql_query_limit($sql, 1);
+				$rows = $this->db->sql_fetchrowset($result);
+				$oldest_log = $rows[0]['log_time'];
+				$this->db->sql_freeresult($result);
 
 				// mchat messages
 				if (is_callable([$this->mchat, 'get_table_mchat']))
@@ -135,7 +147,10 @@ class ipanonym_module
 					$sql = 'SELECT message_time FROM ' . $this->mchat->get_table_mchat() . "
 						WHERE user_ip <> '127.0.0.1'
 						ORDER BY message_time ASC";
-					$oldest_mchat_message = $this->db->sql_query_limit($sql, 1);
+					$result = $this->db->sql_query_limit($sql, 1);
+					$rows = $this->db->sql_fetchrowset($result);
+					$oldest_mchat_message = $rows[0]['message_time'];
+					$this->db->sql_freeresult($result);
 				}
 
 				// mchat logs
@@ -145,7 +160,10 @@ class ipanonym_module
 					$sql = 'SELECT log_time FROM ' . $this->mchat->get_table_mchat_log() . "
 						WHERE log_ip <> '127.0.0.1'
 						ORDER BY log_time ASC";
-					$oldest_mchat_log =$this->db->sql_query_limit($sql, 1);
+					$result = $this->db->sql_query_limit($sql, 1);
+					$rows = $this->db->sql_fetchrowset($result);
+					$oldest_mchat_log = $rows[0]['log_time'];
+					$this->db->sql_freeresult($result);
 				}
 
 				$cronjob_last_run_time = $this->config['crizzo_ipanonym_lastpurge'];
@@ -154,13 +172,13 @@ class ipanonym_module
 					'MCHAT_AVAILABLE'		=> $mchat_avail,
 					'MCHAT_LOG_AVAILABLE'	=> $mchat_log_avail,
 
-					'CRONJOB_LAST_RUN_TIME'		=> $this->user->format_date($cronjob_last_run_time),
-					'OLDEST_POST_TIME'			=> $this->user->format_date($oldest_post),
-					'OLDEST_PM_TIME'			=> $this->user->format_date($oldest_pm),
-					'OLDEST_USER_TIME'			=> $this->user->format_date($oldest_user),
-					'OLDEST_LOG_TIME'			=> $this->user->format_date($oldest_log),
-					'OLDEST_MCHAT_MESSAGE'		=> $this->user->format_date($oldest_mchat_message),
-					'OLDEST_MCHAT_LOG'			=> $this->user->format_date($oldest_mchat_log),
+					'CRONJOB_LAST_RUN_TIME'		=> ($cronjob_last_run_time !='') ? $this->user->format_date($cronjob_last_run_time) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_POST_TIME'			=> ($oldest_post != '') ? $this->user->format_date($oldest_post) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_PM_TIME'			=> ($oldest_pm != '') ? $this->user->format_date($oldest_pm) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_USER_TIME'			=> ($oldest_user != '') ? $this->user->format_date($oldest_user) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_LOG_TIME'			=> ($oldest_log != '') ? $this->user->format_date($oldest_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_MCHAT_MESSAGE'		=> ($oldest_mchat_message != '') ? $this->user->format_date($oldest_mchat_message) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_MCHAT_LOG'			=> ($oldest_mchat_log != '') ? $this->user->format_date($oldest_mchat_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
 				));
 			break;
 		}
