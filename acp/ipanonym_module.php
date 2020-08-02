@@ -99,7 +99,10 @@ class ipanonym_module
 				if ($phpbb_container->has('dmzx.mchat.settings'))
 				{
 					$mchat = $phpbb_container->get('dmzx.mchat.settings');
-					$this->mchat = $mchat;
+				}
+				else
+				{
+					$mchat = null;
 				}
 
 				$this->config = $config;
@@ -148,10 +151,10 @@ class ipanonym_module
 				$this->db->sql_freeresult($result);
 
 				// mchat messages
-				if (is_callable([$this->mchat, 'get_table_mchat']))
+				if (is_callable([$mchat, 'get_table_mchat']))
 				{
 					$mchat_avail = true;
-					$sql = 'SELECT message_time FROM ' . $this->mchat->get_table_mchat() . "
+					$sql = 'SELECT message_time FROM ' . $mchat->get_table_mchat() . "
 						WHERE user_ip <> '127.0.0.1'
 						ORDER BY message_time ASC";
 					$result = $this->db->sql_query_limit($sql, 1);
@@ -161,10 +164,10 @@ class ipanonym_module
 				}
 
 				// mchat logs
-				if (is_callable([$this->mchat, 'get_table_mchat_log']))
+				if (is_callable([$mchat, 'get_table_mchat_log']))
 				{
 					$mchat_log_avail = true;
-					$sql = 'SELECT log_time FROM ' . $this->mchat->get_table_mchat_log() . "
+					$sql = 'SELECT log_time FROM ' . $mchat->get_table_mchat_log() . "
 						WHERE log_ip <> '127.0.0.1'
 						ORDER BY log_time ASC";
 					$result = $this->db->sql_query_limit($sql, 1);
