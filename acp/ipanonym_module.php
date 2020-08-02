@@ -95,6 +95,13 @@ class ipanonym_module
 				// Add the ipanonym ACP lang file
 				$language->add_lang('acp_stats', 'crizzo/ipanonym');
 
+				// Check for mChat Install
+				if ($phpbb_container->has('dmzx.mchat.settings'))
+				{
+					$mchat = $phpbb_container->get('dmzx.mchat.settings');
+					$this->mchat = $mchat;
+				}
+
 				$this->config = $config;
 				$this->template = $template;
 				$this->db = $db;
