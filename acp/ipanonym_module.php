@@ -172,7 +172,7 @@ class ipanonym_module
 					'MCHAT_AVAILABLE'		=> $mchat_avail,
 					'MCHAT_LOG_AVAILABLE'	=> $mchat_log_avail,
 
-					'CRONJOB_LAST_RUN_TIME'		=> ($cronjob_last_run_time !='') ? $this->user->format_date($cronjob_last_run_time) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'CRONJOB_LAST_RUN_TIME'		=> ($cronjob_last_run_time != ('' || '0')) ? $this->user->format_date($cronjob_last_run_time) : $language->lang('ACP_IP_ANONYM_NO_CRONJOB_RUN'),
 					'OLDEST_POST_TIME'			=> ($oldest_post != '') ? $this->user->format_date($oldest_post) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
 					'OLDEST_PM_TIME'			=> ($oldest_pm != '') ? $this->user->format_date($oldest_pm) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
 					'OLDEST_USER_TIME'			=> ($oldest_user != '') ? $this->user->format_date($oldest_user) : $language->lang('ACP_IP_ANONYM_NO_DATE'),

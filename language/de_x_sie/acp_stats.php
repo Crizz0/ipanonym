@@ -31,5 +31,6 @@ $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_OLDEST_MCHAT_MESSAGE' 	=> 'Älteste nicht anonymisierte mChat Nachricht:',
 	'ACP_IP_ANONYM_OLDEST_MCHAT_LOG' 		=> 'Älteste nicht anonymisierter mChat Log-Eintrag:',
 
-		'ACP_IP_ANONYM_NO_DATE'					=> 'Kein Eintrag vorhanden',
+	'ACP_IP_ANONYM_NO_CRONJOB_RUN'			=> 'Cronjob lief noch nicht',
+	'ACP_IP_ANONYM_NO_DATE'					=> 'Kein Eintrag vorhanden',
 ));
