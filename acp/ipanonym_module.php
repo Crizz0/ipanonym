@@ -70,6 +70,7 @@ class ipanonym_module
 						$this->config->set('crizzo_ipanonym_max_age', $this->request->variable('crizzo_ipanonym_max_age', 0));
 						$this->config->set('crizzo_ipanonym_sql_query_runs', $this->request->variable('crizzo_ipanonym_sql_query_runs', 0));
 						$this->config->set('crizzo_ipanonym_should_run_time', $this->request->variable('crizzo_ipanonym_should_run_time', 0));
+						$this->config->set('crizzo_ipanonym_log_add_entry', $this->request->variable('crizzo_ipanonym_log_add_entry', 0));
 
 						trigger_error($language->lang('ACP_IP_ANONYM_UPDATED') . adm_back_link($this->u_action));
 					}
@@ -83,6 +84,7 @@ class ipanonym_module
 					'IP_ANONYM_MAX_AGE_VALUE'				=> $this->config['crizzo_ipanonym_max_age'],
 					'ACP_IP_ANONYM_QUERY_RUNS_VALUE'		=> $this->config['crizzo_ipanonym_sql_query_runs'],
 					'ACP_IP_ANONYM_SHOULD_RUN_TIME_VALUE'	=> $this->config['crizzo_ipanonym_should_run_time'],
+					'ACP_IP_ANONYM_LOG_ADD_ENTRY_VALUE'		=> $this->config['crizzo_ipanonym_log_add_entry'],
 				));
 			break;
 

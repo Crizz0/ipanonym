@@ -25,6 +25,9 @@ $lang = array_merge($lang, array(
 
 	'ACP_IP_ANONYM_LOG_ENTRY'		=> 'IP-addresses anonymised',
 
+	'ACP_IP_ANONYM_LOG_ADD_ENTRY'			=> 'Cronjob creates a log entry',
+	'ACP_IP_ANONYM_LOG_ADD_ENTRY_EXPLAIN'	=> 'A log entry for the cronjob runs will be created everytime the input value is reached since the last run. Setting the value to “0” disables the log entries.',
+
 	'ACP_IP_ANONYM_MAIN'		 	=> 'IP-anonymise - Settings',
 	'ACP_IP_ANONYM_MAIN_EXPLAIN' 	=> 'On this settings page you are able to activate and configure the extension.',
 
@@ -32,7 +35,7 @@ $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_MAIN_SETTINGS_EXPLAIN'	=> 'Activate the extension and setup the maximum age of IP addresses',
 
 	'ACP_IP_ANONYM_MAX_AGE'					=> 'Maximum age of IP-addresses',
-	'ACP_IP_ANONYM_MAX_AGE_EXPLAIN'			=> 'Every IP-address, which belongs to any database entry (e. g. postings, private messages, log-entries) and which are older than this count of days, will be overwritten by “127.0.0.1“. Excluded are poll votings, they will be always overwritten  regardless of their age.',
+	'ACP_IP_ANONYM_MAX_AGE_EXPLAIN'			=> 'Every IP-address, which belongs to any database entry (e. g. postings, private messages, log-entries) and which are older than this count of days, will be overwritten by “127.0.0.1”. Excluded are poll votings, they will be always overwritten  regardless of their age.',
 
 	'ACP_IP_ANONYM_QUERY_RUNS'				=> 'SQL-query-limit runs',
 	'ACP_IP_ANONYM_QUERY_RUNS_EXPLAIN'		=> 'This value controls the sql queries per database table the IP anonymised function performs in each run. Every run consists of seven sql queries to seven different tables. Decrease this value, if you experience performance issues or increase it to perform more runs per task.',
