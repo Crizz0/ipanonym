@@ -1,0 +1,56 @@
+{% include 'overall_header.html' %}
+
+<a id="maincontent"></a>
+
+<h1>{{ lang('ACP_IP_ANONYM_STATS') }}</h1>
+
+<p>{{ lang('ACP_IP_ANONYM_STATS_EXPLAIN') }}</p>
+
+<table class="table1">
+	<caption>{{ lang('ACP_IP_ANONYM_STATS') }}</caption>
+	<colgroup>
+		<col class="col1"><col class="col2">
+	</colgroup>
+	<thead>
+	<tr>
+		<th>{{ lang('ACP_IP_ANONYM_STATS') }}</th>
+		<th>{{ lang('ACP_IP_ANONYM_DATE') }}</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ lang('ACP_IP_ANONYM_CRON_LAST_RUN') }}</td>
+			<td><strong>{{ CRONJOB_LAST_RUN_TIME }}</strong></td>
+		</tr>
+		<tr>
+			<td>{{ lang('ACP_IP_ANONYM_OLDEST_POST') }}</td>
+			<td><strong>{{ OLDEST_POST_TIME }}</strong></td>
+		</tr>
+		<tr>
+			<td>{{ lang('ACP_IP_ANONYM_OLDEST_PM') }}</td>
+			<td><strong>{{ OLDEST_PM_TIME }}</strong></td>
+		</tr>
+		<tr>
+			<td>{{ lang('ACP_IP_ANONYM_OLDEST_USER') }}</td>
+			<td><strong>{{ OLDEST_USER_TIME }}</strong></td>
+		</tr>
+		<tr>
+			<td>{{ lang('ACP_IP_ANONYM_OLDEST_LOG') }}</td>
+			<td><strong>{{ OLDEST_LOG_TIME }}</strong></td>
+		</tr>
+	{% if MCHAT_AVAILABLE %}
+		<tr>
+			<td>{{ lang('ACP_IP_ANONYM_OLDEST_MCHAT_MESSAGE') }}</td>
+			<td><strong>{{ OLDEST_MCHAT_MESSAGE }}</strong></td>
+		</tr>
+	{% endif %}
+	{% if MCHAT_LOG_AVAILABLE %}
+		<tr>
+			<td>{{ lang('ACP_IP_ANONYM_OLDEST_MCHAT_LOG') }}</td>
+			<td><strong>{{ OLDEST_MCHAT_LOG }}</strong></td>
+		</tr>
+	{% endif %}
+	</tbody>
+</table>
+
+{% include 'overall_footer.html' %}
