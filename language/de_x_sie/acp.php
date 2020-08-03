@@ -25,6 +25,9 @@ $lang = array_merge($lang, array(
 
 	'ACP_IP_ANONYM_LOG_ENTRY'		=> 'IP-Adressen anonymisiert',
 
+	'ACP_IP_ANONYM_LOG_ADD_ENTRY'			=> 'Cronjob erstellt einen Log-Eintrag',
+	'ACP_IP_ANONYM_LOG_ADD_ENTRY_EXPLAIN'	=> 'Ein Log-Eintrag wird für den Cronjob-Durchlauf jedesmal erstellt, sobald dieser Wert seit dem letzten Durchlauf erreicht wurde. Es werden keine Log-Einträge erstellt, wenn „0” als Wert eingestellt wird.',
+
 	'ACP_IP_ANONYM_MAIN'		 	=> 'IP-anonymisieren - Einstellungen',
 	'ACP_IP_ANONYM_MAIN_EXPLAIN' 	=> 'Auf dieser Einstellungsseite kann die Funktion der Erweiterung aktiviert und konfiguriert werden.',
 

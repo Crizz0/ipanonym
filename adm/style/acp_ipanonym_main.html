@@ -31,7 +31,12 @@
 
 		<dl>
 			<dt><label for="crizzo_ipanonym_should_run_time">{{ lang('ACP_IP_ANONYM_SHOULD_RUN_TIME')}}{{ lang('COLON') }}</label><br><span>{{ lang('ACP_IP_ANONYM_SHOULD_RUN_TIME_EXPLAIN')}}</span></dt>
-			<dd><input id="crizzo_ipanonym_should_run_time" type="number" min="2" max="9999" name="crizzo_ipanonym_should_run_time" value="{{ ACP_IP_ANONYM_SHOULD_RUN_TIME_VALUE }}"> {{ lang('ACP_IP_ANONYM_MINUTES') }}</dd>
+			<dd><input id="crizzo_ipanonym_should_run_time" type="number" min="1" max="9999" name="crizzo_ipanonym_should_run_time" value="{{ ACP_IP_ANONYM_SHOULD_RUN_TIME_VALUE }}"> {{ lang('ACP_IP_ANONYM_MINUTES') }}</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="crizzo_ipanonym_log_add_entry">{{ lang('ACP_IP_ANONYM_LOG_ADD_ENTRY')}}{{ lang('COLON') }}</label><br><span>{{ lang('ACP_IP_ANONYM_LOG_ADD_ENTRY_EXPLAIN')}}</span></dt>
+			<dd><input id="crizzo_ipanonym_log_add_entry" type="number" min="0" max="99999" name="crizzo_ipanonym_log_add_entry" value="{{ ACP_IP_ANONYM_LOG_ADD_ENTRY_VALUE }}"></dd>
 		</dl>
 	</fieldset>
 

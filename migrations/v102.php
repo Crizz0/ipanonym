@@ -31,6 +31,9 @@ class v102 extends \phpbb\db\migration\migration
 						'modes'				=> array('ipanonym_stats'),
 					),
 				)),
+				// Configs for disable adding a log entry
+				array('config.add', array('crizzo_ipanonym_log_add_entry', 1)),
+				array('config.add', array('crizzo_ipanonym_log_add_entry_counter', 1, true)),
 		);
 		return $data;
 	}
