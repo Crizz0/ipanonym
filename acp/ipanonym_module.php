@@ -172,6 +172,14 @@ class ipanonym_module
 					$rows = $this->db->sql_fetchrowset($result);
 					$oldest_mchat_log = $rows[0]['log_time'];
 					$this->db->sql_freeresult($result);
+
+					// Template events for mChat
+					$this->template->assign_vars(array(
+						'MCHAT_AVAILABLE'		=> $mchat_avail,
+						'MCHAT_LOG_AVAILABLE'	=> $mchat_log_avail,
+						'OLDEST_MCHAT_MESSAGE'		=> ($oldest_mchat_message != '') ? $this->user->format_date($oldest_mchat_message) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+						'OLDEST_MCHAT_LOG'			=> ($oldest_mchat_log != '') ? $this->user->format_date($oldest_mchat_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					));
 				}
 
 				$cronjob_last_run_time = $this->config['crizzo_ipanonym_lastpurge'];
@@ -184,16 +192,6 @@ class ipanonym_module
 					'OLDEST_LOG_TIME'			=> ($oldest_log != '') ? $this->user->format_date($oldest_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
 				));
 
-				// Template events for mChat 
-				if (is_callable([$mchat, 'get_table_mchat']) && is_callable([$mchat, 'get_table_mchat_log']))
-				{
-					$this->template->assign_vars(array(
-						'MCHAT_AVAILABLE'		=> $mchat_avail,
-						'MCHAT_LOG_AVAILABLE'	=> $mchat_log_avail,
-						'OLDEST_MCHAT_MESSAGE'		=> ($oldest_mchat_message != '') ? $this->user->format_date($oldest_mchat_message) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
-						'OLDEST_MCHAT_LOG'			=> ($oldest_mchat_log != '') ? $this->user->format_date($oldest_mchat_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
-					));
-				}
 			break;
 		}
 	}
