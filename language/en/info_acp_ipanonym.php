@@ -21,5 +21,5 @@ $lang = array_merge($lang, array(
 	'ACP_IP_ANONYM_SETTINGS'	=> 'Settings',
 	'ACP_IP_ANONYM_STATS'	=> 'Statistics',
 
-	'IP_ANONYM_LOG_ANONYMIZE_IP_CRON'		=> 'IPs automatically anonymised',
+	'LOG_ANONYMIZE_IP_CRON'		=> 'IPs automatically anonymised',
 ));

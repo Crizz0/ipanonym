@@ -51,7 +51,7 @@ class anonymise_ip extends \phpbb\cron\task\base
 
 		$this->config->set('crizzo_ipanonym_lastpurge', $time_now, false);
 		$this->task_anonymise->anonymise_ips($time_run);
-		$this->phpbb_log->add('admin', ANONYMOUS, '127.0.0.1', 'IP_ANONYM_LOG_ANONYMIZE_IP_CRON');
+		$this->phpbb_log->add('admin', ANONYMOUS, '127.0.0.1', 'LOG_ANONYMIZE_IP_CRON');
 	}
 
 	/**
