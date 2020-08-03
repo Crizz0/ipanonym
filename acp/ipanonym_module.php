@@ -91,9 +91,6 @@ class ipanonym_module
 			// Statistics
 			case 'ipanonym_stats':
 
-				/** @var \phpbb\language\language $language */
-				$language = $phpbb_container->get('language');
-
 				// Add the ipanonym ACP lang file
 				$language->add_lang('acp_stats', 'crizzo/ipanonym');
 
