@@ -10,6 +10,7 @@
 #
 set -e
 set -x
+
 EPV=$1
 NOTESTS=$2
 

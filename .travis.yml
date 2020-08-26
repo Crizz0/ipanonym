@@ -36,7 +36,6 @@ env:
 branches:
   only:
     - master
-    - develop
     - /^\d+(\.\d+)?\.x$/
 
 services:
