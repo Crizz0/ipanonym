@@ -25,9 +25,10 @@ class ipanonym_module
 	public $page_title;
 
 	protected $config;
+	protected $db;
+	protected $language;
 	protected $request;
 	protected $template;
-	protected $db;
 	protected $user;
 
 	public function main($id, $mode)
@@ -38,17 +39,20 @@ class ipanonym_module
 		/** @var \phpbb\language\language $language */
 		$language = $phpbb_container->get('language');
 
+		$this->config = $config;
+		$this->db = $db;
+		$this->language = $language;
+		$this->request = $request;
+		$this->template = $template;
+		$this->user = $user;
+
 		// Mode switch start
 		switch ($mode)
 		{
 			// Settings
 			case 'ipanonym_settings':
 				// Add the ipanonym ACP lang file
-				$language->add_lang('acp', 'crizzo/ipanonym');
-
-				$this->request = $request;
-				$this->config = $config;
-				$this->template = $template;
+				$this->language->add_lang('acp', 'crizzo/ipanonym');
 
 				$this->tpl_name = 'acp_ipanonym_main';
 				$this->page_title = ('ACP_IP_ANONYM_MAIN');
@@ -61,7 +65,7 @@ class ipanonym_module
 				{
 					if (!check_form_key($form_name))
 					{
-						$error = $language->lang('FORM_INVALID');
+						$error = $this->language->lang('FORM_INVALID');
 					}
 
 					if (empty($error) && $this->request->is_set_post('submit'))
@@ -72,7 +76,7 @@ class ipanonym_module
 						$this->config->set('crizzo_ipanonym_should_run_time', $this->request->variable('crizzo_ipanonym_should_run_time', 0));
 						$this->config->set('crizzo_ipanonym_log_add_entry', $this->request->variable('crizzo_ipanonym_log_add_entry', 0));
 
-						trigger_error($language->lang('ACP_IP_ANONYM_UPDATED') . adm_back_link($this->u_action));
+						trigger_error($this->language->lang('ACP_IP_ANONYM_UPDATED') . adm_back_link($this->u_action));
 					}
 				}
 
@@ -92,7 +96,7 @@ class ipanonym_module
 			case 'ipanonym_stats':
 
 				// Add the ipanonym ACP lang file
-				$language->add_lang('acp_stats', 'crizzo/ipanonym');
+				$this->language->add_lang('acp_stats', 'crizzo/ipanonym');
 
 				// Check for mChat availability
 				if ($phpbb_container->has('dmzx.mchat.settings'))
@@ -104,11 +108,6 @@ class ipanonym_module
 					$mchat = null;
 				}
 
-				$this->config = $config;
-				$this->template = $template;
-				$this->db = $db;
-				$this->user = $user;
-
 				$this->tpl_name = 'acp_ipanonym_stats';
 				$this->page_title = ('ACP_IP_ANONYM_STATS');
 
@@ -118,8 +117,8 @@ class ipanonym_module
 					WHERE poster_ip <> '127.0.0.1'
 					ORDER BY post_time ASC";
 				$result = $this->db->sql_query_limit($sql, 1);
-				$rows = $this->db->sql_fetchrowset($result);
-				$oldest_post = $rows[0]['post_time'];
+				$row = $this->db->sql_fetchrow($result);
+				$oldest_post = $row ? $row['post_time'] : 0;
 				$this->db->sql_freeresult($result);
 
 				// private messages
@@ -127,8 +126,8 @@ class ipanonym_module
 					WHERE author_ip <> '127.0.0.1'
 					ORDER BY message_time ASC";
 				$result = $this->db->sql_query_limit($sql, 1);
-				$rows = $this->db->sql_fetchrowset($result);
-				$oldest_pm = $rows[0]['message_time'];
+				$row = $this->db->sql_fetchrow($result);
+				$oldest_pm = $row ? $row['message_time'] : 0;
 				$this->db->sql_freeresult($result);
 
 				// user
@@ -136,8 +135,8 @@ class ipanonym_module
 					WHERE user_ip <> '127.0.0.1'
 					ORDER BY user_regdate ASC";
 				$result = $this->db->sql_query_limit($sql, 1);
-				$rows = $this->db->sql_fetchrowset($result);
-				$oldest_user = $rows[0]['user_regdate'];
+				$row = $this->db->sql_fetchrow($result);
+				$oldest_user = $row ? $row['user_regdate'] : 0;
 				$this->db->sql_freeresult($result);
 
 				// logs
@@ -145,8 +144,8 @@ class ipanonym_module
 					WHERE log_ip <> '127.0.0.1'
 					ORDER BY log_time ASC";
 				$result = $this->db->sql_query_limit($sql, 1);
-				$rows = $this->db->sql_fetchrowset($result);
-				$oldest_log = $rows[0]['log_time'];
+				$row = $this->db->sql_fetchrow($result);
+				$oldest_log = $row ? $row['log_time'] : 0;
 				$this->db->sql_freeresult($result);
 
 				// mchat statistics
@@ -158,8 +157,8 @@ class ipanonym_module
 						WHERE user_ip <> '127.0.0.1'
 						ORDER BY message_time ASC";
 					$result = $this->db->sql_query_limit($sql, 1);
-					$rows = $this->db->sql_fetchrowset($result);
-					$oldest_mchat_message = $rows[0]['message_time'];
+					$row = $this->db->sql_fetchrow($result);
+					$oldest_mchat_message = $row ? $row['message_time'] : 0;
 					$this->db->sql_freeresult($result);
 
 					// mchat logs
@@ -168,27 +167,27 @@ class ipanonym_module
 						WHERE log_ip <> '127.0.0.1'
 						ORDER BY log_time ASC";
 					$result = $this->db->sql_query_limit($sql, 1);
-					$rows = $this->db->sql_fetchrowset($result);
-					$oldest_mchat_log = $rows[0]['log_time'];
+					$row = $this->db->sql_fetchrow($result);
+					$oldest_mchat_log = $row ? $row['log_time'] : 0;
 					$this->db->sql_freeresult($result);
 
 					// Template events for mChat
 					$this->template->assign_vars(array(
-						'MCHAT_AVAILABLE'		=> $mchat_avail,
-						'MCHAT_LOG_AVAILABLE'	=> $mchat_log_avail,
-						'OLDEST_MCHAT_MESSAGE'		=> ($oldest_mchat_message != '') ? $this->user->format_date($oldest_mchat_message) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
-						'OLDEST_MCHAT_LOG'			=> ($oldest_mchat_log != '') ? $this->user->format_date($oldest_mchat_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+						'MCHAT_AVAILABLE'			=> $mchat_avail,
+						'MCHAT_LOG_AVAILABLE'		=> $mchat_log_avail,
+						'OLDEST_MCHAT_MESSAGE'		=> $oldest_mchat_message ? $this->user->format_date($oldest_mchat_message) : $this->language->lang('ACP_IP_ANONYM_NO_DATE'),
+						'OLDEST_MCHAT_LOG'			=> $oldest_mchat_log ? $this->user->format_date($oldest_mchat_log) : $this->language->lang('ACP_IP_ANONYM_NO_DATE'),
 					));
 				}
 
 				$cronjob_last_run_time = $this->config['crizzo_ipanonym_lastpurge'];
 
 				$this->template->assign_vars(array(
-					'CRONJOB_LAST_RUN_TIME'		=> ($cronjob_last_run_time != ('' || '0')) ? $this->user->format_date($cronjob_last_run_time) : $language->lang('ACP_IP_ANONYM_NO_CRONJOB_RUN'),
-					'OLDEST_POST_TIME'			=> ($oldest_post != '') ? $this->user->format_date($oldest_post) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
-					'OLDEST_PM_TIME'			=> ($oldest_pm != '') ? $this->user->format_date($oldest_pm) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
-					'OLDEST_USER_TIME'			=> ($oldest_user != '') ? $this->user->format_date($oldest_user) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
-					'OLDEST_LOG_TIME'			=> ($oldest_log != '') ? $this->user->format_date($oldest_log) : $language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'CRONJOB_LAST_RUN_TIME'		=> $cronjob_last_run_time ? $this->user->format_date($cronjob_last_run_time) : $this->language->lang('ACP_IP_ANONYM_NO_CRONJOB_RUN'),
+					'OLDEST_POST_TIME'			=> $oldest_post ? $this->user->format_date($oldest_post) : $this->language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_PM_TIME'			=> $oldest_pm ? $this->user->format_date($oldest_pm) : $this->language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_USER_TIME'			=> $oldest_user ? $this->user->format_date($oldest_user) : $this->language->lang('ACP_IP_ANONYM_NO_DATE'),
+					'OLDEST_LOG_TIME'			=> $oldest_log ? $this->user->format_date($oldest_log) : $this->language->lang('ACP_IP_ANONYM_NO_DATE'),
 				));
 
 			break;
