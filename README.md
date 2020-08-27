@@ -5,3 +5,5 @@ This phpBB extension will anonymise the user's IP in posts, logs, sessions etc. 
 Author: Christian Schnegelberger
 
 URL: https://www.crizzo.de
+
+[![Build Status](https://travis-ci.org/Crizz0/ipanonym.svg?branch=master)](https://travis-ci.org/Crizz0/ipanonym)
