@@ -17,6 +17,13 @@ class init_install extends \phpbb\db\migration\migration
 		return isset($this->config['crizzo_ipanonym_enable']);
 	}
 
+	static public function depends_on()
+	{
+		 return array(
+			'\phpbb\db\migration\data\v32x\v324',
+		);
+	}
+
 	public function update_data()
 	{
 		$data = array(
