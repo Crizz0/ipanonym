@@ -14,8 +14,8 @@
 		<dl>
 			<dt><label for="crizzo_ipanonym_enable">{{ lang('ACP_IP_ANONYM_ENABLE')}}{{ lang('COLON') }}</label><br><span>{{ lang('ACP_IP_ANONYM_ENABLE_EXPLAIN')}}</span></dt>
 			<dd>
-				<label><input type="radio" class="radio" id="crizzo_ipanonym_enable" name="crizzo_ipanonym_enable" value="1" {% if IP_ANONYM_ENABLED %}checked="checked"{% endif %}/> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="crizzo_ipanonym_enable" value="0" {% if not IP_ANONYM_ENABLED %}checked="checked"{% endif %}/> {{ lang('NO') }}</label>
+				<label><input type="radio" class="radio" id="crizzo_ipanonym_enable" name="crizzo_ipanonym_enable" value="1" {% if IP_ANONYM_ENABLED %} checked {% endif %}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="crizzo_ipanonym_enable" value="0" {% if not IP_ANONYM_ENABLED %} checked {% endif %}> {{ lang('NO') }}</label>
 			</dd>
 		</dl>
 
@@ -41,7 +41,7 @@
 	</fieldset>
 
 	<fieldset class="submit-buttons">
-		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}">&nbsp;
 		{{ S_FORM_TOKEN }}
 	</fieldset>
 </form>

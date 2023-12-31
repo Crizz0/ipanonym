@@ -12,7 +12,7 @@ namespace crizzo\ipanonym\migrations;
 
 class v102 extends \phpbb\db\migration\migration
 {
-	static public function depends_on()
+	public static function depends_on()
 	{
 		return array(
 			'\crizzo\ipanonym\migrations\init_install',

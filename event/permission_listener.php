@@ -35,7 +35,7 @@ class permission_listener implements EventSubscriberInterface
 		$this->auth = $auth;
 	}
 
-	static public function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
 		return array(
 			'core.permissions' => 'permissions',
