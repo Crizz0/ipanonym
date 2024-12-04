@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "This phpBB extension will anonymise the user's IP in posts, logs, sessions etc.",
 	"homepage": "https://github.com/Crizz0/ipanonym",
-	"version": "1.0.4",
-	"time": "2023-12-31",
+	"version": "1.1.0",
+	"time": "2024-12-04",
 	"license": "GPL-2.0-only",
 	"authors": [{
 			"name": "Christian Schnegelberger",
