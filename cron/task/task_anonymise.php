@@ -31,7 +31,7 @@ class task_anonymise
 	 * @param \phpbb\config\config							$config
 	 * @param \phpbb\db\driver\driver_interface				$db
 	 */
-	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \dmzx\mchat\core\settings $mchat = null)
+	public function __construct(\phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, ?\dmzx\mchat\core\settings $mchat = null)
 	{
 		$this->config 		= $config;
 		$this->db			= $db;
